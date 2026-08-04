@@ -9,6 +9,7 @@ Problem Statement
 Most community registrations, especially in church and faith-based settings, still rely on Google Forms or scattered WhatsApp messages to collect member details. This approach is rarely well-coordinated: responses are inconsistent, hard to organize, and easy to lose track of once numbers grow. This project takes a different approach, a purpose-built, validated web form with a dedicated backend, so data is collected consistently and cleanly from the start. The same approach can be adapted for other sectors in the future wherever there's a need to manage structured registration.
 
 About
+
 This form collects personal information, contact details, salvation and faith background, community interest, and a signed commitment agreement from anyone registering with The Reformers Nation. It was built as a real project for the community, not a tutorial exercise, and doubles as practice for core front-end skills, DOM manipulation, form validation, and working with a live backend.
 
 Features
