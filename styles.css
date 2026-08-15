@@ -5,6 +5,10 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.hidden {
+  display: none !important;
+}
+
 body {
   background-color: #f2f4f7;
   display: flex;

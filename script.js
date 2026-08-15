@@ -1,5 +1,24 @@
 const form = document.getElementById("registration-form");
 
+const referralSelect = document.getElementById("referral");
+const referralOtherRow = document.getElementById("referral-other-row");
+const referralOtherField = document.getElementById("referral-other");
+
+function toggleReferralOther() {
+  const showOther = referralSelect.value === "other";
+  referralOtherRow.classList.toggle("hidden", !showOther);
+  referralOtherField.required = showOther;
+
+  if (!showOther) {
+    referralOtherField.value = "";
+    referralOtherField.classList.remove("invalid", "valid");
+    document.getElementById("referral-other-error").textContent = "";
+  }
+}
+
+referralSelect.addEventListener("change", toggleReferralOther);
+toggleReferralOther();
+
 function validateForm() {
   const fullName = document.getElementById("full-name").value.trim();
   const isFullNameValid = fullName.length > 0;
@@ -18,7 +37,7 @@ function validateForm() {
   const isMaritalStatusValid = maritalstatus !== "";
 
   const email = document.getElementById("email").value.trim();
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   const isEmailValid = emailRegex.test(email);
 
   const phoneNumber = document.getElementById("phone").value.trim();
@@ -37,6 +56,9 @@ function validateForm() {
 
   const referral = document.getElementById("referral").value;
   const isReferralValid = referral !== "";
+
+  const referralOther = document.getElementById("referral-other").value.trim();
+  const isReferralOtherValid = referral !== "other" || referralOther.length > 0;
 
   const expectations = document.getElementById("expectations").value.trim();
   const isExpectationsValid = expectations.length > 0;
@@ -60,6 +82,7 @@ function validateForm() {
     "born-again": isBornAgainValid,
     baptism: isBaptismValid,
     referral: isReferralValid,
+    "referral-other": isReferralOtherValid,
     expectations: isExpectationsValid,
     "commitment-signature": isCommitmentSignatureValid,
     terms: isTermsValid,
@@ -82,6 +105,7 @@ const getFieldElements = () => {
     "born-again": document.getElementById("born-again-group"),
     baptism: document.getElementById("baptism-group"),
     referral: document.getElementById("referral"),
+    "referral-other": document.getElementById("referral-other"),
     expectations: document.getElementById("expectations"),
     "commitment-signature": document.getElementById("commitment-signature"),
     terms: document.getElementById("terms"),
@@ -99,6 +123,7 @@ const errorMessages = {
   "born-again": "Please select an option.",
   baptism: "Please select an option.",
   referral: "Please select how you heard about us.",
+  "referral-other": "Please tell us who referred you or how you found us.",
   expectations: "Please share your expectations.",
   "commitment-signature": "Please sign with your full name.",
   terms: "You must agree to the terms and conditions.",
@@ -116,6 +141,7 @@ const getErrorElements = () => {
     "born-again": document.getElementById("born-again-error"),
     baptism: document.getElementById("baptism-error"),
     referral: document.getElementById("referral-error"),
+    "referral-other": document.getElementById("referral-other-error"),
     expectations: document.getElementById("expectations-error"),
     "commitment-signature": document.getElementById(
       "commitment-signature-error"
