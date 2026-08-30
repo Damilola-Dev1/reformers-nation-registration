@@ -9,8 +9,18 @@
   display: none !important;
 }
 
+:root {
+  --burgundy: #6d1b34;
+  --burgundy-dark: #4a1224;
+  --gold: #b6902f;
+  --gold-light: #e3c877;
+  --cream: #fbf6ee;
+  --text-dark: #2c1620;
+  --border-soft: #e6d9c8;
+}
+
 body {
-  background-color: #f2f4f7;
+  background-color: var(--cream);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,13 +34,26 @@ body {
   max-width: 720px;
   padding: 35px 45px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 4px 16px rgba(109, 27, 52, 0.12);
+}
+
+.brand-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #222;
+  color: var(--burgundy-dark);
   font-size: 24px;
 }
 
@@ -41,12 +64,12 @@ h1 {
 .section-title {
   text-transform: uppercase;
   font-size: 12px;
-  letter-spacing: 1px;
-  color: #8a8f98;
+  letter-spacing: 1.5px;
+  color: var(--burgundy);
   font-weight: bold;
   padding-bottom: 10px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 2px solid var(--gold-light);
 }
 
 .form-row {
@@ -68,12 +91,12 @@ h1 {
 label {
   margin-bottom: 6px;
   font-size: 14px;
-  color: #333;
+  color: var(--text-dark);
   font-weight: bold;
 }
 
 .required {
-  color: #e74c3c;
+  color: var(--burgundy);
 }
 
 input[type="text"],
@@ -82,12 +105,13 @@ input[type="date"],
 select,
 textarea {
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-soft);
   border-radius: 6px;
   font-size: 16px;
   outline: none;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #fafbfc;
+  background-color: var(--cream);
+  color: var(--text-dark);
 }
 
 textarea {
@@ -99,33 +123,34 @@ input[type="password"]:focus,
 input[type="date"]:focus,
 select:focus,
 textarea:focus {
-  border-color: #4a90e2;
+  border-color: var(--gold);
   background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(182, 144, 47, 0.15);
 }
 
 /* JS should add this class to a field when its value fails validation */
 input.invalid,
 select.invalid,
 textarea.invalid {
-  border-color: #e74c3c;
-  background-color: #fdf2f2;
+  border-color: #b3261e;
+  background-color: #fbeeed;
 }
 
 /* JS should add this class to a field once it passes validation */
 input.valid,
 select.valid,
 textarea.valid {
-  border-color: #2ecc71;
+  border-color: #4d7a3f;
 }
 
 .terms-box {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-soft);
   border-radius: 6px;
-  background-color: #fafbfc;
+  background-color: var(--cream);
   padding: 14px 16px;
   font-size: 13px;
   line-height: 1.6;
-  color: #555;
+  color: var(--text-dark);
   max-height: 140px;
   overflow-y: auto;
 }
@@ -145,12 +170,17 @@ textarea.valid {
   font-size: 14px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--burgundy);
+}
+
 .notice-text {
   font-size: 13px;
   line-height: 1.6;
-  color: #555;
-  background-color: #fafbfc;
-  border: 1px solid #e5e7eb;
+  color: var(--text-dark);
+  background-color: var(--cream);
+  border: 1px solid var(--border-soft);
   border-radius: 6px;
   padding: 14px 16px;
   margin-bottom: 20px;
@@ -179,6 +209,16 @@ textarea.valid {
   font-size: 14px;
 }
 
+.brand-brief {
+  text-align: center;
+  color: var(--burgundy-dark);
+  font-size: 14px;
+  line-height: 1.7;
+  border: none;
+  background-color: transparent;
+  padding: 10px 6px 20px;
+}
+
 .modal-overlay {
   display: none;
   position: fixed;
@@ -186,7 +226,7 @@ textarea.valid {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(44, 22, 32, 0.55);
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -204,6 +244,7 @@ textarea.valid {
   width: 100%;
   max-width: 320px;
   text-align: center;
+  border-top: 3px solid var(--gold);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
@@ -211,7 +252,7 @@ textarea.valid {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #ecfdf5;
+  background-color: #f6ede0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,20 +261,20 @@ textarea.valid {
 
 .modal-checkmark {
   font-size: 26px;
-  color: #059669;
+  color: var(--burgundy);
   font-weight: bold;
 }
 
 .modal-title {
   font-size: 18px;
   font-weight: bold;
-  color: #222;
+  color: var(--burgundy-dark);
   margin-bottom: 8px;
 }
 
 .modal-body {
   font-size: 13px;
-  color: #555;
+  color: var(--text-dark);
   line-height: 1.6;
   margin-bottom: 20px;
 }
@@ -241,7 +282,7 @@ textarea.valid {
 .modal-button {
   width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
+  background-color: var(--burgundy);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -251,7 +292,7 @@ textarea.valid {
 }
 
 .modal-button:hover {
-  background-color: #3b7dc4;
+  background-color: var(--burgundy-dark);
 }
 
 #message-box {
@@ -263,7 +304,7 @@ textarea.valid {
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #b3261e;
   font-size: 12px;
   margin-top: 4px;
   min-height: 14px;
@@ -272,7 +313,7 @@ textarea.valid {
 button#submit-btn {
   width: 100%;
   padding: 12px;
-  background-color: #4a90e2;
+  background-color: var(--burgundy);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -280,10 +321,11 @@ button#submit-btn {
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
+  letter-spacing: 0.5px;
 }
 
 button#submit-btn:hover {
-  background-color: #3b7dc4;
+  background-color: var(--burgundy-dark);
 }
 
 @media (max-width: 600px) {
@@ -300,6 +342,11 @@ button#submit-btn:hover {
   .form-container {
     padding: 22px 18px;
     border-radius: 8px;
+  }
+
+  .brand-logo {
+    width: 84px;
+    height: 84px;
   }
 
   h1 {
